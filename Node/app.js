@@ -2,7 +2,6 @@
 /* Creating node server using http modules */
 
 const http = require('http');
-const url = require('url');
 const fs = require('fs');
 const hostname = 'localhost';
 const port = 9000;
@@ -10,16 +9,26 @@ http.createServer(function(request, response) {
     const url = request.url;
     const method = request.method;
     if(url === '/'){
-        response.write('<!DOCTYPE html><html><body><h2> HTML Forms</h2><form action = "/submitUser" method="POST">First name: <br><input type = "text" name = "firstname"><br><br><input type = "submit" value = "Submit"></form><p> If you click the "Submit"button, the form - data will be sent to a page called "/action_page.php". </p></body></html>');
+        response.write('<!DOCTYPE html><html><body><h2> HTML Forms</h2><form action = "/submitUser" method="POST">First name: <br><input type = "text" name = "firstname"><br><br><input type = "submit" value = "Submit"></form></body></html>');
         return response.end();
     }
 
     if (url === '/submitUser' && method == 'POST') {
-        fs.writeFileSync('../Node/src/formResponse.txt', 'Started learning node js and this file has been created by using nodejs!');
-        response.statusCode = 302;
-        response.statusMessage = 'Message written successfully!';
-        response.setHeader('location', '/');
-        return response.end();
+        const body = [];
+        request.on('data', chunk => {
+            console.log(chunk);
+            body.push(chunk);
+        });
+        return request.on('end', () => {
+            const parsedBody = Buffer.concat(body).toString();
+            const message = parsedBody.toUpperCase();
+            fs.writeFile('../Node/src/formResponse.html', message, err => {
+                response.statusCode = 302;
+                response.statusMessage == 'File created successfully!';
+                response.setHeader('location', '/');
+                return response.end();
+            });
+        });
     }
     response.writeHead(200, {
         "Content-Type": "text/html"
