@@ -22,7 +22,7 @@ http.createServer(function (request, response) {
         return request.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
             const message = parsedBody.toUpperCase();
-            fs.writeFile('../Node/src/formResponse.html', message, err => {
+            fs.writeFile('../Node/src/formResponse.txt', message, err => {
                 response.statusCode = 302;
                 response.statusMessage == 'File created successfully!';
                 response.setHeader('location', '/');
