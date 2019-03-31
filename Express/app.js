@@ -1,5 +1,6 @@
 /* created by Vikash Kumar Singh for express server*/
 
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser'); 
 const app = express();
@@ -12,13 +13,17 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.use(adminRouter);
+//this is the way to access static files, public is nothing but a folder containing static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/admin', adminRouter);
 app.use(shopRouter);
 
 // handle error
 
 app.use((req, res, next) => {
-    res.status(404).send('<!DOCTYPE html> <html> <head> <meta charset = "UTF-8"> <title> Title of the document </title></head> <body> <h1> Page not found !!!</h1></body> </html>');
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html')); 
+    //this is one way of adding path using dirname, another one is like we can create it in a seperate module
 });
 
 
