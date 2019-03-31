@@ -17,3 +17,4 @@ This project is completely dedicated for node and express tutorials.
 * Middlewares (next): //allow the request to continue to the next middleware in line or the next middleware          function in the file. It follows top to bottom approach.
 * For sending the request we got rid of so many things what we used in node js server creation, why? beacuse         express itself use those methods(like setHeader(), write() etc) behind the scene.
 * Internally behind the scene express also do the same what we did in node js server creation, it uses same          http for creating the server.
+* so overall express  provides functionalities which help us to write less number of lines of codes as compare to    node js server creation.
