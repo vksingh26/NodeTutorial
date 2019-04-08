@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title #{docTitle} <!--this is the way to bind data in pug-->
+        link(rel="stylesheet", href="")
+    body
+        header.main-header#main-header
+            nav.main-header-nav#main-header-nav
+                ul.main-header-nav-ul#main-header-nav-ul
+                    li.main-header-nav-ul-li#main-header-nav-ul-li
+                        a.active(href="/")  Shop
+                    li.main-header-nav-ul-li#main-header-nav-ul-li
+                        a(href="/admin/add-product")    Add Product
+        main
+            if prods.length > 0
+                .grid
+                    each product in prods
+                        article.card-article
+                            header.card-article-header
+                                h1.product-title #{product.title}
+            else
+                h1 No Products found!!!
+                            
