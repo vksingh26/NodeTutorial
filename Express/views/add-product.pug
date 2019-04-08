@@ -1,0 +1,12 @@
+//below line is used for extending the main-layout which is having the nav bar, we can say it as master template where we put all the common layouts
+extends layouts/main-layout.pug 
+// In below line we can use custom css for this particular page, and master css will get imported from main-layout.pug
+block styles
+    link(rel="stylesheet", href="")
+block content
+    main
+        form(action="/admin/add-product", method="POST")
+            .form-control
+                label(for="title") Title
+                input(type="text" name="title" class="title")#title
+            button.btn(type="submit") Add Product

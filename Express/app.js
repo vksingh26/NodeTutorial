@@ -24,7 +24,7 @@ app.use(shopRouter);
 // handle error
 
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', '404.html')); 
+    res.status(404).render('404', {pageTitle: 'Page Not Found'})
     //this is one way of adding path using dirname, another one is like we can create it in a seperate module
 });
 

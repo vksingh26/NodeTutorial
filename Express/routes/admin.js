@@ -8,14 +8,11 @@ const products = [];
 
 routes.get('/add-product', (req, res, next) => {
     console.log(`Add Product middleware !!!`);
-    //this is one way of adding path using dirname, another one is like we can create it in a seperate module
-    //res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'));
-    //this is another way using seperate module
-    res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+    res.render('add-product', {pageTitle: 'Add Product', path: '/admin/add-product'}); //render is use to render pug file, first param is template name, second is the object where we can paas n number of data
 });
-//start working with dummy date sharing.
+//start working with dummy data sharing.
 routes.post('/add-product', (req, res, next) => {
-    console.log(req.body);
+    console.log('request body:', req.body);
     products.push({
         title: req.body.title
     });
