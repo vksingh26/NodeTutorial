@@ -9,4 +9,10 @@ block content
             .form-control
                 label(for="title") Title
                 input(type="text" name="title" class="title")#title
+                label(for="imageUrl") Img
+                input(type="text" name="imageUrl")#imageUrl
+                label(for="price") Price
+                input(type="number" name="price" step="0.01")#pirce
+                label(for="description") Description
+                textarea(name="description", cols="5")#description
             button.btn(type="submit") Add Product

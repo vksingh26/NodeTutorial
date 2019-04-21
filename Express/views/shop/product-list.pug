@@ -3,11 +3,14 @@ block styles
     link(rel="stylesheet", href="")
 block content
     main
-        if prods.length > 0
+        if prods
             .grid
                 each product in prods
                     article.card-article
                         header.card-article-header
                             h1.product-title #{product.title}
+                            img(src=product.imageUrl alt=product.title)
+                            h1.product-price #{product.price}
+                            p.product-desc #{product.description}
         else
             h1 No Products found!!!
