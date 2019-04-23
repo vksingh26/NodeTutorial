@@ -3,7 +3,7 @@ block styles
     link(rel="stylesheet", href="")
 block content
     main
-        if prods
+        if prods.length > 0
             .grid
                 each product in prods
                     article.card-article
@@ -12,5 +12,11 @@ block content
                             img(src=product.imageUrl alt=product.title)
                             h1.product-price #{product.price}
                             p.product-desc #{product.description}
+                        .action-btn
+                            a.btn(href="/products/"+ product.id) Details
+                            form(action="/cart" method="POST")
+                                button.btn(type="submit") Add to Cart
+                                input(type="hidden" name="productId" value=product.id)
+
         else
             h1 No Products found!!!

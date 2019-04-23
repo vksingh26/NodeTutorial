@@ -12,5 +12,9 @@ block content
                             img(src=product.imageUrl alt=product.title)
                             h1.product-price #{product.price}
                             p.product-desc #{product.description}
+                    form(action="/cart" method="POST")
+                        button.btn(type="submit") Add to Cart
+                        input(type="hidden" name="productId" value=product.id)    
+                            
         else
             h1 No Products found!!!
