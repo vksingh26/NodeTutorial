@@ -1,0 +1,14 @@
+extends ../layouts/main-layout.pug
+block styles
+    link(rel="stylesheet", href="")
+block content
+    if orders.length >= 0
+        ul.orders
+        each order in orders
+            li.order_items
+                h1 Order - #{order.id}
+                ul.orders_products
+                    each product in order.items
+                        li #{product.title} (#{product.quantity})
+    else
+        h1 No Products Found !!!
