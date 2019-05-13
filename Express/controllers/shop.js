@@ -1,7 +1,7 @@
 const Product = require('../models/product');
 const User = require('../models/users');
 exports.getProducts = (req, res, next) => {
-    Product.fetchAll()
+    Product.find() //this method is provided by mongoose
         .then(products => {
             res.render('shop/product-list', {
                 prods: products,
@@ -16,16 +16,7 @@ exports.getProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId;
-    // Product.findAll({ where: { id: prodId } })
-    //   .then(products => {
-    //     res.render('shop/product-detail', {
-    //       product: products[0],
-    //       pageTitle: products[0].title,
-    //       path: '/products'
-    //     });
-    //   })
-    //   .catch(err => console.log(err));
-    Product.findById(prodId)
+    Product.findById(prodId) //here mongoose provides this findById method, we don't have to write it on our own like we did earlier
         .then(product => {
             res.render('shop/product-detail', {
                 product: product,
@@ -37,7 +28,7 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
-    Product.fetchAll()
+    Product.find()
         .then(products => {
             res.render('shop/index', {
                 prods: products,
