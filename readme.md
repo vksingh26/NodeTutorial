@@ -1,6 +1,9 @@
 This project is completely dedicated for node and express tutorials.
 
 #Event Loop
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3e263f422de24ba389e35fa32d10ca6d)](https://app.codacy.com/app/vksingh26/NodeTutorial?utm_source=github.com&utm_medium=referral&utm_content=vksingh26/NodeTutorial&utm_campaign=Badge_Grade_Settings)
+
 * A loop which is run or started by nodejs that keeps the nodejs process running.
 * that handles all the callbacks and it has a certain order in which it goes through the callbacks.
 * So basically it's a loop that just well keeps on looping unsurprisingly, at the beginning of each new iteration    it checks if there are any timer callbacks it should execute. We haven't set up any timers yet but basically       there is set timeout and set interval
